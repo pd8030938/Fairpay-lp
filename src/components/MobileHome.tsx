@@ -1,5 +1,6 @@
 'use client';
 
+// Mobile optimized landing page component - v2
 import WaitlistForm from "@/components/WaitlistForm2";
 import Countdown from "@/components/Countdown";
 import { ChevronRight, Shield, Users, TrendingUp, CheckCircle, Code, Palette, Megaphone, FileText, Wrench, Camera, Lock, Award } from 'lucide-react';
