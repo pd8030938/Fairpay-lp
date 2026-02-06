@@ -10,6 +10,7 @@ export async function sendMonitoringEvent(event: { type: string; message?: strin
       // timeout not available in fetch easily; rely on platform
     });
   } catch (e) {
-    console.warn('Failed to send monitoring event:', e?.message || e);
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    console.warn('Failed to send monitoring event:', errorMessage);
   }
 }
