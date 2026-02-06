@@ -1,17 +1,33 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import WaitlistForm from "@/components/WaitlistForm2";
 import Countdown from "@/components/Countdown";
+import ViewToggle from "@/components/ViewToggle";
+import MobileHome from "@/components/MobileHome";
+import { useView } from "@/lib/viewContext";
 import { Menu, X, ChevronDown, Shield, Zap, Users, TrendingUp, Globe, Smartphone, Lock, CheckCircle, Star, Award, Briefcase, Code, Palette, Megaphone, FileText, Wrench, Camera } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null);
+  const { view } = useView();
 
+  // Se for mobile, mostrar versão otimizada para mobile
+  if (view === 'mobile') {
+    return (
+      <>
+        <ViewToggle />
+        <MobileHome />
+      </>
+    );
+  }
+
+  // Desktop view (versão original)
   return (
     <>
+      <ViewToggle />
       {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md border-b border-cinza-100">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">

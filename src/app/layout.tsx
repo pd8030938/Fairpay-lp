@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { ViewProvider } from "@/lib/viewContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +41,9 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} antialiased`}
       >
-        {children}
+        <ViewProvider>
+          {children}
+        </ViewProvider>
       </body>
     </html>
   );
