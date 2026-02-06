@@ -151,7 +151,8 @@ export async function POST(request: NextRequest) {
           // try to notify monitoring about the failure
           try {
             const { sendMonitoringEvent } = await import('@/lib/monitoring');
-            sendMonitoringEvent({ type: 'db_fallback_failure', message: String(pgErr.message || pgErr), details: { email: cleanEmail } });
+            const errorMessage = pgErr instanceof Error ? pgErr.message : String(pgErr);
+            sendMonitoringEvent({ type: 'db_fallback_failure', message: errorMessage, details: { email: cleanEmail } });
           } catch (_) {}
           throw e; // rethrow original
         }
