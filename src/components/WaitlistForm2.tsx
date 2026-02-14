@@ -16,11 +16,11 @@ const WaitlistFormSchema = z
   .superRefine((data, ctx) => {
     // email format / TLD checks
     const eErr = getEmailValidationError(data.email);
-    if (eErr) ctx.addIssue({ path: ["email"], code: z.ZodIssueCode.custom, message: eErr });
+    if (eErr) ctx.addIssue({ path: ["email"], code: "custom", message: eErr });
 
     // name validation (profanity / basic checks)
     const nameErr = getNameValidationError(data.name);
-    if (nameErr) ctx.addIssue({ path: ["name"], code: z.ZodIssueCode.custom, message: nameErr });
+    if (nameErr) ctx.addIssue({ path: ["name"], code: "custom", message: nameErr });
   });
 
 export default function WaitlistForm() {
@@ -31,7 +31,7 @@ export default function WaitlistForm() {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMessage("");
     setErrors({});
@@ -90,7 +90,7 @@ export default function WaitlistForm() {
 
   return (
     <section className="py-16 px-4">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+      <div className="max-w-md mx-auto bg-slate-50 rounded-lg shadow-lg p-8">
         <h2 className="text-2xl font-bold mb-6 font-poppins">Junte-se à Revolução</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -112,6 +112,8 @@ export default function WaitlistForm() {
             tabIndex={-1}
             autoComplete="off"
             className="hidden"
+            title="Honeypot field"
+            aria-hidden="true"
           />
           {errors.name && <p className="text-red-500 text-sm mb-3">{errors.name}</p>}
 

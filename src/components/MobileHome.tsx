@@ -10,13 +10,13 @@ export default function MobileHome() {
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null);
 
   return (
-    <main className="bg-branco">
+    <main className="bg-slate-50">
         {/* HERO SECTION - Full Width */}
         <section className="relative w-screen h-96 -mx-[calc((100vw-100%)/2)] bg-gradient-to-r from-azul-primary to-azul-dark overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48"></div>
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-white rounded-full -ml-36 -mb-36"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-slate-50 rounded-full -mr-48 -mt-48"></div>
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-slate-50 rounded-full -ml-36 -mb-36"></div>
           </div>
 
           {/* Overlay */}
@@ -24,7 +24,7 @@ export default function MobileHome() {
 
           {/* Content */}
           <div className="relative h-full flex flex-col items-center justify-center text-center px-4 text-branco">
-            <div className="inline-block px-3 py-1 bg-branco/20 backdrop-blur rounded-full text-branco text-xs font-semibold mb-4">
+            <div className="inline-block px-3 py-1 bg-slate-50/20 backdrop-blur rounded-full text-branco text-xs font-semibold mb-4">
               Marketplace de Confiança
             </div>
             
@@ -40,7 +40,7 @@ export default function MobileHome() {
               <button className="flex-1 px-4 py-3 bg-verde-success text-branco font-bold rounded-lg text-xs hover:bg-verde-dark transition">
                 Registar Agora
               </button>
-              <button className="flex-1 px-4 py-3 bg-branco/20 text-branco font-bold rounded-lg text-xs border border-branco/30 hover:bg-branco/30 transition">
+              <button className="flex-1 px-4 py-3 bg-slate-50/20 text-branco font-bold rounded-lg text-xs border border-slate-50/30 hover:bg-slate-50/30 transition">
                 Saber Mais
               </button>
             </div>
@@ -86,8 +86,8 @@ export default function MobileHome() {
           </div>
 
           {/* Cards de Benefícios */}
-          <div className="space-y-3">
-            <div className="p-4 bg-branco rounded-xl border border-cinza-200 shadow-sm">
+            <div className="space-y-3">
+            <div className="p-4 bg-slate-50 rounded-xl border border-cinza-200 shadow-sm">
               <div className="flex gap-3 items-start">
                 <div className="p-2 bg-azul-light rounded-lg flex-shrink-0">
                   <Lock size={18} className="text-azul-primary" />
@@ -99,7 +99,7 @@ export default function MobileHome() {
               </div>
             </div>
 
-            <div className="p-4 bg-branco rounded-xl border border-cinza-200 shadow-sm">
+            <div className="p-4 bg-slate-50 rounded-xl border border-cinza-200 shadow-sm">
               <div className="flex gap-3 items-start">
                 <div className="p-2 bg-verde-light rounded-lg flex-shrink-0">
                   <CheckCircle size={18} className="text-verde-success" />
@@ -111,7 +111,7 @@ export default function MobileHome() {
               </div>
             </div>
 
-            <div className="p-4 bg-branco rounded-xl border border-cinza-200 shadow-sm">
+            <div className="p-4 bg-slate-50 rounded-xl border border-cinza-200 shadow-sm">
               <div className="flex gap-3 items-start">
                 <div className="p-2 bg-laranja-accent/10 rounded-lg flex-shrink-0">
                   <TrendingUp size={18} className="text-laranja-accent" />
@@ -131,7 +131,7 @@ export default function MobileHome() {
             <h2 className="text-2xl font-bold text-cinza-900 mb-2">Categorias Disponíveis</h2>
             <p className="text-sm text-cinza-600 mb-6">Encontre o profissional perfeito para seu projeto</p>
 
-            <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3">
               {[
                 { icon: Code, label: 'Programação', desc: 'Desenvolvimento de apps e sites' },
                 { icon: Palette, label: 'Design', desc: 'Logotipos e identidade visual' },
@@ -142,7 +142,7 @@ export default function MobileHome() {
               ].map((cat) => (
                 <div
                   key={cat.label}
-                  className="p-4 bg-branco rounded-xl border border-cinza-200 shadow-sm hover:shadow-md hover:border-azul-primary transition cursor-pointer"
+                  className="p-4 bg-slate-50 rounded-xl border border-cinza-200 shadow-sm hover:shadow-md hover:border-azul-primary transition cursor-pointer"
                 >
                   <cat.icon size={24} className="text-azul-primary mb-2" />
                   <p className="font-bold text-cinza-900 text-sm">{cat.label}</p>

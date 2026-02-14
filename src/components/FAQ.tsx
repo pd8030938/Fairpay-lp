@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Mail } from 'lucide-react';
 
 export default function FAQ() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openQ, setOpenQ] = useState<string | null>(null);
 
   const faqs = [
     {
@@ -41,57 +42,102 @@ export default function FAQ() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  };
+
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 md:py-32 px-4 bg-white">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 font-poppins">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Perguntas Frequentes
           </h2>
-          <p className="text-xl text-slate-600 font-inter">
+          <p className="text-xl text-slate-600">
             Tudo que você precisa saber sobre FairPay
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, idx) => (
-            <div
-              key={idx}
-              className="border-2 border-slate-200 rounded-lg overflow-hidden hover:border-blue-500 transition hover:shadow-lg"
+        <motion.div 
+          className="space-y-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {faqs.map((faq) => (
+            <motion.div
+              key={faq.q}
+              variants={itemVariants}
+              className="border border-slate-200 rounded-lg overflow-hidden hover:border-slate-300 transition"
             >
-              <button
-                onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-                className="w-full px-6 py-4 text-left font-semibold text-slate-900 bg-gradient-to-r from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 transition flex justify-between items-center"
+              <motion.button
+                onClick={() => setOpenQ(openQ === faq.q ? null : faq.q)}
+                className="w-full px-6 py-4 text-left font-semibold text-slate-900 bg-slate-50 hover:bg-slate-100 transition flex justify-between items-center"
+                whileHover={{ backgroundColor: "rgb(248, 250, 252)" }}
               >
                 <span>{faq.q}</span>
-                <ChevronDown 
-                  className={`w-5 h-5 transition-transform duration-300 ${openIdx === idx ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {openIdx === idx && (
-                <div className="px-6 py-4 bg-gradient-to-b from-blue-50 to-white text-slate-700 border-t-2 border-slate-200 animate-fade-in">
-                  {faq.a}
-                </div>
-              )}
-            </div>
+                <motion.div
+                  animate={{ rotate: openQ === faq.q ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-5 h-5 text-slate-600" />
+                </motion.div>
+              </motion.button>
+              <AnimatePresence>
+                {openQ === faq.q && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="px-6 py-4 bg-white text-slate-700 border-t border-slate-200"
+                  >
+                    {faq.a}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-16 p-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-2 border-blue-200 text-center hover:shadow-lg transition">
-          <h3 className="text-2xl font-bold text-slate-900 mb-2 font-poppins">
+        <motion.div 
+          className="mt-16 p-8 bg-gradient-to-r from-slate-50 to-slate-100 rounded-2xl border border-slate-200 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          whileHover={{ boxShadow: "0 20px 40px rgba(0,0,0,0.08)" }}
+        >
+          <h3 className="text-2xl font-bold text-slate-900 mb-3">
             Ainda tem dúvidas?
           </h3>
-          <p className="text-slate-600 mb-6 font-inter">
+          <p className="text-slate-600 mb-6">
             Entre em contato conosco. Nosso suporte está pronto para ajudar!
           </p>
           <a
             href="mailto:suporte@fairpay.com"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-lg transition transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-600 to-emerald-500 text-white font-semibold rounded-lg hover:shadow-lg transition"
           >
             <Mail className="w-5 h-5" />
             Enviar Mensagem
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

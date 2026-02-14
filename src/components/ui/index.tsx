@@ -6,9 +6,9 @@ export function Button({
   onClick,
   className = "" 
 }: {
-  children: React.ReactNode;
-  onClick?: (e?: any) => void | Promise<void>;
-  className?: string;
+  readonly children: React.ReactNode;
+  readonly onClick?: (e?: any) => void | Promise<void>;
+  readonly className?: string;
 }) {
   return (
     <button
@@ -27,11 +27,11 @@ export function Input({
   onChange,
   className = ""
 }: {
-  type?: string;
-  placeholder?: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
+  readonly type?: string;
+  readonly placeholder?: string;
+  readonly value: string;
+  readonly onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  readonly className?: string;
 }) {
   return (
     <input
@@ -48,11 +48,11 @@ export function Card({
   children,
   className = ""
 }: {
-  children: React.ReactNode;
-  className?: string;
+  readonly children: React.ReactNode;
+  readonly className?: string;
 }) {
   return (
-    <div className={`bg-white rounded-lg shadow-md p-6 ${className}`}>
+    <div className={`bg-slate-50 rounded-lg shadow-md p-6 ${className}`}>
       {children}
     </div>
   );

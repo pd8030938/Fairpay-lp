@@ -21,7 +21,7 @@ const config: Config = {
         'cinza-100': '#F3F4F6',          // Cards
         'cinza-600': '#4B5563',          // Texto secundário
         'cinza-900': '#111827',          // Texto principal
-        'branco': '#FFFFFF',             // Branco
+        'branco': '#F8FAFC',             // Branco suave (off-white) para evitar fundos totalmente brancos
       },
       fontFamily: {
         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],

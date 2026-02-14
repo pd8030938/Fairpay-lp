@@ -9,7 +9,7 @@ export default function WaitlistForm() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setMessage("");
@@ -38,7 +38,7 @@ export default function WaitlistForm() {
 
   return (
     <section className="py-16 px-4">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+      <div className="max-w-md mx-auto bg-slate-50 rounded-lg shadow-lg p-8">
         <h2 className="text-2xl font-bold mb-6">Junte-se à Revolução</h2>
         <form onSubmit={handleSubmit}>
           <Input

@@ -1,10 +1,10 @@
 ﻿'use client';
 
-import Image from 'next/image';
 import WaitlistForm from "@/components/WaitlistForm2";
 import Countdown from "@/components/Countdown";
 import ViewToggle from "@/components/ViewToggle";
 import MobileHome from "@/components/MobileHome";
+import HeroReactbits from '@/components/HeroReactbits';
 import { useView } from "@/lib/viewContext";
 import { Menu, X, ChevronDown, Shield, Zap, Users, TrendingUp, Globe, Smartphone, Lock, CheckCircle, Star, Award, Briefcase, Code, Palette, Megaphone, FileText, Wrench, Camera } from 'lucide-react';
 import { useState } from 'react';
@@ -29,116 +29,35 @@ export default function Home() {
     <>
       <ViewToggle />
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md border-b border-cinza-100">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-azul-primary to-azul-dark bg-clip-text text-transparent">FairPay</div>
+      <nav className="sticky top-0 z-50 bg-slate-50/70 backdrop-blur-lg shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+          <div className="text-2xl font-extrabold bg-gradient-to-r from-cyan-600 to-emerald-500 bg-clip-text text-transparent">FairPay</div>
           
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#como-funciona" className="text-cinza-600 hover:text-azul-primary transition font-medium">Como Funciona</a>
-            <a href="#categorias" className="text-cinza-600 hover:text-azul-primary transition font-medium">Categorias</a>
-            <a href="#faq" className="text-cinza-600 hover:text-azul-primary transition font-medium">FAQ</a>
-            <button className="px-6 py-2 bg-gradient-to-r from-azul-primary to-azul-dark text-branco rounded-lg hover-lift shadow-lg">Registar</button>
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#como-funciona" className="text-slate-600 hover:text-slate-900 transition font-medium">Como Funciona</a>
+            <a href="#categorias" className="text-slate-600 hover:text-slate-900 transition font-medium">Categorias</a>
+            <a href="#faq" className="text-slate-600 hover:text-slate-900 transition font-medium">FAQ</a>
+            <button className="px-5 py-2 bg-gradient-to-r from-cyan-600 to-emerald-500 text-white rounded-lg shadow-md transition">Registar</button>
           </div>
 
-          <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button className="md:hidden p-2 rounded hover:bg-slate-100" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden px-4 pb-4 space-y-4 bg-cinza-50 border-t border-cinza-100">
-            <a href="#como-funciona" className="block text-cinza-600 hover:text-azul-primary">Como Funciona</a>
-            <a href="#categorias" className="block text-cinza-600 hover:text-azul-primary">Categorias</a>
-            <a href="#faq" className="block text-cinza-600 hover:text-azul-primary">FAQ</a>
-            <button className="w-full px-4 py-2 bg-gradient-to-r from-azul-primary to-azul-dark text-branco rounded-lg">Registar</button>
+          <div className="md:hidden px-4 pb-4 space-y-4 bg-slate-50/95 border-t border-slate-200">
+            <a href="#como-funciona" className="block text-slate-700 hover:text-slate-900">Como Funciona</a>
+            <a href="#categorias" className="block text-slate-700 hover:text-slate-900">Categorias</a>
+            <a href="#faq" className="block text-slate-700 hover:text-slate-900">FAQ</a>
+            <button className="w-full px-4 py-2 bg-gradient-to-r from-cyan-600 to-emerald-500 text-white rounded-lg">Registar</button>
           </div>
         )}
       </nav>
 
       <main>
         {/* Hero */}
-        <section className="relative bg-gradient-to-br from-branco via-azul-light to-branco py-24 md:py-32 px-4 md:px-8 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-azul-primary opacity-5 rounded-full blur-3xl -z-10"></div>
-          <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-verde-success opacity-5 rounded-full blur-3xl -z-10 transform -translate-x-1/2"></div>
-          
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Left - Text */}
-              <div>
-                <div className="inline-block mb-6 px-4 py-2 bg-azul-light rounded-full text-azul-dark font-semibold text-sm">✨ O Marketplace de Confiança em Angola</div>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-cinza-900 leading-tight">FairPay: Contrate Profissionais.<br /><span className="bg-gradient-to-r from-azul-primary to-verde-success bg-clip-text text-transparent">Com Garantia.</span></h1>
-                <p className="text-xl text-cinza-600 mb-8">O marketplace de serviços que Angola merece — seguro, simples e justo.</p>
-                <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                  <a href="#waitlist" className="px-8 py-4 bg-gradient-to-r from-azul-primary to-verde-success text-branco font-bold rounded-lg hover-lift shadow-lg text-lg inline-flex items-center justify-center gap-2">
-                    <CheckCircle size={20} /> Juntar-se à Lista de Espera
-                  </a>
-                  <a href="#como-funciona" className="px-8 py-4 border-2 border-azul-primary text-azul-primary font-bold rounded-lg hover:bg-azul-light transition inline-flex items-center justify-center gap-2">
-                    Saber Mais
-                  </a>
-                </div>
-                
-                {/* Badges de confiança */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="flex items-center gap-2 text-cinza-600">
-                    <Shield size={20} className="text-verde-success" />
-                    <span className="font-medium text-sm">100% Seguro</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-cinza-600">
-                    <Users size={20} className="text-azul-primary" />
-                    <span className="font-medium text-sm">50+ Profissionais</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-cinza-600">
-                    <Award size={20} className="text-laranja-accent" />
-                    <span className="font-medium text-sm">Verificados</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Right - Image */}
-              <div className="hidden md:flex justify-center items-start">
-                <div className="w-full max-w-md flex flex-col gap-8">
-                  {/* Main Image Container */}
-                  <div className="relative w-full h-[450px] rounded-2xl overflow-hidden shadow-2xl border-8 border-branco/20">
-                    {/* Main Image */}
-                    <img
-                      src="https://i.pinimg.com/736x/ad/47/55/ad475517a4256b970b71abd6ad1035f8.jpg"
-                      alt="FairPay Marketplace Interface"
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                    
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-cinza-900/30 to-transparent pointer-events-none"></div>
-                  </div>
-                  
-                  {/* Floating Cards - Below Image */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {/* Card 1 - Left */}
-                    <div className="bg-branco rounded-xl p-5 shadow-lg border border-cinza-200 transform -rotate-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 bg-verde-light rounded-lg">
-                          <CheckCircle size={20} className="text-verde-success" />
-                        </div>
-                        <span className="text-sm font-bold text-cinza-900">Pagamento<br />Seguro</span>
-                      </div>
-                      <p className="text-xs text-cinza-600 leading-relaxed">Dinheiro retido até aprovação</p>
-                    </div>
-                    
-                    {/* Card 2 - Right */}
-                    <div className="bg-branco rounded-xl p-5 shadow-lg border border-cinza-200 transform rotate-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 bg-laranja-accent/10 rounded-lg">
-                          <Star size={20} className="text-laranja-accent fill-laranja-accent" />
-                        </div>
-                        <span className="text-sm font-bold text-cinza-900">Avaliações<br />Verificadas</span>
-                      </div>
-                      <p className="text-xs text-cinza-600 leading-relaxed">Profissionais confiáveis</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HeroReactbits />
 
         {/* O Problema */}
         <section className="py-24 md:py-32 px-4 md:px-8 bg-cinza-50">
@@ -423,8 +342,8 @@ export default function Home() {
               ].map((t) => (
                 <div key={t.name} className="bg-gradient-to-br from-branco to-cinza-50 p-8 rounded-xl card-hover border-l-4 border-verde-success shadow-md">
                   <div className="flex gap-1 mb-4">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} size={18} className="text-laranja-accent fill-laranja-accent" />
+                    {new Array(t.rating).fill(0).map((_, i) => (
+                      <Star key={`${t.name}-star-${i}`} size={18} className="text-laranja-accent fill-laranja-accent" />
                     ))}
                   </div>
                   <p className="italic mb-4 text-cinza-700">"{t.story}"</p>
@@ -472,19 +391,19 @@ export default function Home() {
         </section>
 
         {/* CTAs */}
-        <section className="py-24 md:py-32 px-4 md:px-8 bg-gradient-to-r from-azul-primary via-azul-dark to-azul-primary text-branco">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-            <div id="cta-clientes" className="bg-branco/10 backdrop-blur rounded-xl p-10 text-center card-hover border border-branco/20">
-              <Briefcase size={40} className="mx-auto mb-4 text-laranja-accent" />
+        <section className="py-20 md:py-24 px-4 md:px-8">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            <div id="cta-clientes" className="bg-gradient-to-r from-cyan-600 to-emerald-500 text-white rounded-2xl p-8 shadow-lg">
+              <Briefcase size={40} className="mx-auto mb-4 text-white/90" />
               <h3 className="text-3xl font-bold mb-4">Se Precisas de Serviços</h3>
-              <a href="#waitlist" className="px-8 py-3 bg-gradient-to-r from-azul-primary to-verde-success text-branco font-bold rounded-lg mb-4 hover-lift shadow-lg inline-block w-full">Juntar-se à Lista de Espera</a>
-              <p className="text-branco/80">Design. Programação. Marketing. Tudo num só lugar.</p>
+              <a href="#waitlist" className="px-6 py-3 bg-slate-50 text-cyan-700 font-bold rounded-lg mb-4 shadow inline-block w-full text-center">Juntar-se à Lista de Espera</a>
+              <p className="text-white/90">Design. Programação. Marketing. Tudo num só lugar.</p>
             </div>
-            <div id="cta-profissionais" className="bg-branco/10 backdrop-blur rounded-xl p-10 text-center card-hover border border-branco/20">
-              <TrendingUp size={40} className="mx-auto mb-4 text-verde-light" />
+            <div id="cta-profissionais" className="bg-slate-50 rounded-2xl p-8 shadow-lg border">
+              <TrendingUp size={40} className="mx-auto mb-4 text-emerald-500" />
               <h3 className="text-3xl font-bold mb-4">Se és Profissional</h3>
-              <a href="#waitlist" className="px-8 py-3 border-2 border-branco text-branco font-bold rounded-lg mb-4 hover:bg-branco hover:text-azul-dark transition inline-block w-full">Juntar-se à Lista de Espera</a>
-              <p className="text-branco/80">Mostra o teu trabalho. Conquista clientes. Recebe garantido.</p>
+              <a href="#waitlist" className="px-6 py-3 border-2 border-cyan-600 text-cyan-600 font-bold rounded-lg mb-4 inline-block w-full text-center">Juntar-se à Lista de Espera</a>
+              <p className="text-slate-700">Mostra o teu trabalho. Conquista clientes. Recebe garantido.</p>
             </div>
           </div>
         </section>
@@ -515,55 +434,45 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gradient-to-b from-cinza-900 to-cinza-900/95 text-branco py-20 px-4 md:px-8 border-t border-branco/10">
+        <footer className="bg-slate-900 text-white py-16 px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
-            {/* Main Content */}
-            <div className="grid md:grid-cols-3 gap-12 mb-16">
-              {/* Brand */}
-              <div className="space-y-4">
-                <h4 className="text-2xl font-bold bg-gradient-to-r from-azul-primary to-verde-success bg-clip-text text-transparent">FairPay</h4>
-                <p className="text-branco/70 text-sm leading-relaxed">O marketplace de confiança para Angola. Seguro, simples e justo.</p>
-                <div className="flex gap-4 pt-4">
-                  <div className="w-10 h-10 bg-azul-primary/20 rounded-lg flex items-center justify-center hover:bg-azul-primary/40 transition cursor-pointer">
-                    <Globe size={18} className="text-azul-primary" />
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <div>
+                <h4 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">FairPay</h4>
+                <p className="text-slate-300 text-sm leading-relaxed">O marketplace de confiança para Angola. Seguro, simples e justo.</p>
+                <div className="flex gap-3 pt-4">
+                  <div className="w-10 h-10 bg-slate-50/6 rounded-lg flex items-center justify-center hover:bg-slate-50/12 transition cursor-pointer">
+                    <Globe size={18} className="text-white/80" />
                   </div>
-                  <div className="w-10 h-10 bg-verde-success/20 rounded-lg flex items-center justify-center hover:bg-verde-success/40 transition cursor-pointer">
-                    <Users size={18} className="text-verde-success" />
+                  <div className="w-10 h-10 bg-slate-50/6 rounded-lg flex items-center justify-center hover:bg-slate-50/12 transition cursor-pointer">
+                    <Users size={18} className="text-white/80" />
                   </div>
-                  <div className="w-10 h-10 bg-laranja-accent/20 rounded-lg flex items-center justify-center hover:bg-laranja-accent/40 transition cursor-pointer">
-                    <Award size={18} className="text-laranja-accent" />
+                  <div className="w-10 h-10 bg-slate-50/6 rounded-lg flex items-center justify-center hover:bg-slate-50/12 transition cursor-pointer">
+                    <Award size={18} className="text-white/80" />
                   </div>
                 </div>
               </div>
-              
-              {/* Redes Sociais */}
-              <div className="space-y-4">
-                <h4 className="font-bold text-lg">Redes Sociais</h4>
-                <ul className="space-y-3 text-sm">
-                  <li><a href="#" className="text-branco/70 hover:text-branco transition inline-flex items-center gap-2"><span className="w-1 h-1 bg-azul-primary rounded-full"></span>Instagram</a></li>
-                  <li><a href="#" className="text-branco/70 hover:text-branco transition inline-flex items-center gap-2"><span className="w-1 h-1 bg-verde-success rounded-full"></span>Facebook</a></li>
-                  <li><a href="#" className="text-branco/70 hover:text-branco transition inline-flex items-center gap-2"><span className="w-1 h-1 bg-laranja-accent rounded-full"></span>LinkedIn</a></li>
+
+              <div>
+                <h4 className="font-semibold text-lg text-white">Redes Sociais</h4>
+                <ul className="space-y-2 text-sm text-slate-300 mt-3">
+                  <li><button className="hover:text-white transition">Instagram</button></li>
+                  <li><button className="hover:text-white transition">Facebook</button></li>
+                  <li><button className="hover:text-white transition">LinkedIn</button></li>
                 </ul>
               </div>
-              
-              {/* Contacto */}
-              <div className="space-y-4">
-                <h4 className="font-bold text-lg">Contacto</h4>
-                <ul className="space-y-3 text-sm text-branco/70">
+
+              <div>
+                <h4 className="font-semibold text-lg text-white">Contacto</h4>
+                <ul className="space-y-2 text-sm text-slate-300 mt-3">
                   <li className="flex items-center gap-2"><Smartphone size={16} /> +244 9XX XXX XXX</li>
                   <li className="flex items-center gap-2"><Lock size={16} /> ola@fairpay.ao</li>
                   <li className="flex items-center gap-2"><Globe size={16} /> Luanda, Angola</li>
                 </ul>
               </div>
             </div>
-            
-            {/* Divider */}
-            <div className="border-t border-branco/10"></div>
-            
-            {/* Copyright */}
-            <div className="pt-8 text-center">
-              <p className="text-sm text-branco/60">© 2026 FairPay. Todos os direitos reservados. | <span className="hover:text-branco/80 cursor-pointer transition">Privacidade</span> · <span className="hover:text-branco/80 cursor-pointer transition">Termos</span></p>
-            </div>
+
+            <div className="border-t border-white/6 pt-6 text-center text-sm text-slate-400">© 2026 FairPay. Todos os direitos reservados. · <span className="hover:text-white cursor-pointer">Privacidade</span> · <span className="hover:text-white cursor-pointer">Termos</span></div>
           </div>
         </footer>
       </main>
